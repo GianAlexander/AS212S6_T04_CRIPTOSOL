@@ -1,0 +1,137 @@
+/* Estilo personalizado para la barra de navegación */
+.navbar {
+    background-color: #343a40;
+    /* Color de fondo personalizado */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra para dar profundidad */
+}
+
+.navbar-brand {
+    font-size: 1.8em;
+    /* Tamaño de fuente más grande para la marca */
+    font-weight: bold;
+    /* Texto en negrita */
+    color: #ffffff;
+    /* Color de texto blanco para resaltar la marca */
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    /* Color del texto */
+    padding: 0.5em 1em;
+    /* Espaciado alrededor del texto */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Transición suave para el hover */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #495057;
+    /* Color de fondo al pasar el ratón */
+    border-radius: 4px;
+    /* Bordes redondeados para el efecto hover */
+    color: #f8f9fa;
+    /* Cambio de color de texto al pasar el ratón */
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    background-color: #495057;
+    /* Color de fondo para el enlace activo */
+    color: #f8f9fa;
+    /* Color de texto para el enlace activo */
+}
+
+/* Estilos para el pie de página */
+.home-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+  }
+  
+  .footer {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .box {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .box i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #f7c08a;
+  }
+  
+  .box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f7c08a;
+  }
+  
+  .box p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: #f7c08a;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .icon:hover {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .icon:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .credit {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #f7c08a;
+  }
