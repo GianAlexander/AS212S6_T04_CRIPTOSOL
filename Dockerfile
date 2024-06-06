@@ -15,7 +15,7 @@
 # docker login --username=pedroluyo --password=#Gotitlikethat24
 # docker push pedroluyo/pib
 
-FROM node:14
+FROM node:20
 
 WORKDIR /app
 
