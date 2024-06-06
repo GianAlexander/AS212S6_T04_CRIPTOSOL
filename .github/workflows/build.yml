@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - Front-end-NoStandaLone
+      - Front-end-NoStandaLone2
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
