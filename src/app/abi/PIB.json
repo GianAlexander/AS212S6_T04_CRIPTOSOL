@@ -1,0 +1,166 @@
+[
+  {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+  },
+  {
+      "anonymous": false,
+      "inputs": [
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "desde",
+              "type": "address"
+          },
+          {
+              "indexed": true,
+              "internalType": "address",
+              "name": "hacia",
+              "type": "address"
+          },
+          {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "cantidad",
+              "type": "uint256"
+          }
+      ],
+      "name": "Transferencia",
+      "type": "event"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_hacia",
+              "type": "address"
+          }
+      ],
+      "name": "transferir",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "address",
+              "name": "_cuenta",
+              "type": "address"
+          }
+      ],
+      "name": "obtenerSaldo",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "propietario",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "historialTransacciones",
+      "outputs": [
+          {
+              "components": [
+                  {
+                      "internalType": "address",
+                      "name": "desde",
+                      "type": "address"
+                  },
+                  {
+                      "internalType": "address",
+                      "name": "hacia",
+                      "type": "address"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "cantidad",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "fecha",
+                      "type": "uint256"
+                  }
+              ],
+              "internalType": "struct TransferenciaSepoliaETH.Transaccion[]",
+              "name": "",
+              "type": "tuple[]"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "obtenerNumeroTransacciones",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "_indice",
+              "type": "uint256"
+          }
+      ],
+      "name": "obtenerDetallesTransaccion",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          },
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          },
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          },
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "receive",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+  }
+]

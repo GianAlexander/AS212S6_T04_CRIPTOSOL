@@ -1,8 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
 
 body {
-    background-color: #faedd6; /* Color de fondo pastel */
-}   
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    /* Color de fondo pastel */
+}
+
+:root {
+    --default-color: #000;
+    --accent-color: #007bff;
+    --heading-color: #333;
+    --contrast-color: #fff;
+    --danger-color: #ec8712;
+    --primary-color: #50a4ff;
+    --success-color: #50ff67;
+    --border-color: #b9b7b7;
+}

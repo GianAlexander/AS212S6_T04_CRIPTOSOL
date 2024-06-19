@@ -1,0 +1,474 @@
+.icon-img {
+    width: 50%;
+    max-width: 100%;
+    height: auto;
+}
+
+.small-card {
+    max-width: 20rem;
+    margin: auto;
+}
+
+.small-card-img {
+    width: 75%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.larger-img {
+    width: 150%;
+    max-width: 500px;
+}
+
+.small-card-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+#hero {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 140px 0 100px 0;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    right: -100%;
+    top: 20%;
+    width: 250%;
+    height: 200%;
+    z-index: -1;
+    background-color: #e8ecf5;
+    transform: skewY(135deg);
+}
+
+#hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 56px;
+    color: #5777ba;
+    font-family: "Poppins", sans-serif;
+}
+
+#hero h2 {
+    color: #515f7d;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+#hero .download-btn {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    display: inline-block;
+    padding: 8px 24px 10px 46px;
+    border-radius: 3px;
+    transition: 0.5s;
+    color: #fff;
+    background: #47536e;
+    position: relative;
+}
+
+#hero .download-btn:hover {
+    background: #5777ba;
+}
+
+#hero .download-btn i {
+    font-size: 20px;
+    position: absolute;
+    left: 18px;
+    top: 8.5px;
+}
+
+#hero .download-btn+.download-btn {
+    margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+    #hero {
+        text-align: center;
+    }
+
+    #hero .download-btn+.download-btn {
+        margin: 0 10px;
+    }
+
+    #hero .hero-img {
+        text-align: center;
+    }
+
+    #hero .hero-img img {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    #hero h2 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+
+    #hero .hero-img img {
+        width: 70%;
+    }
+}
+
+@media (max-width: 575px) {
+    #hero .hero-img img {
+        width: 80%;
+    }
+}
+
+.features .content {
+    padding: 30px 0;
+}
+
+.features .content .icon-box {
+    margin-top: 25px;
+}
+
+.features .content .icon-box h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 5px 0 10px 60px;
+}
+
+.features .content .icon-box i {
+    font-size: 48px;
+    float: left;
+    color: #5777ba;
+}
+
+.features .content .icon-box p {
+    font-size: 15px;
+    color: #979aa1;
+    margin-left: 60px;
+}
+
+@media (max-width: 991px) {
+    .features .image {
+        text-align: center;
+    }
+
+    .features .image img {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 667px) {
+    .features .image img {
+        max-width: 100%;
+    }
+}
+
+section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.section-bg {
+    background-color: #f2f5fa;
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    color: #5777ba;
+    font-family: "Poppins", sans-serif;
+}
+
+.section-title p {
+    margin-bottom: 0;
+}
+
+.team .team-member {
+    box-shadow: 0px 2px 15px color-mix(in srgb, var(--default-color), transparent 90%);
+    position: relative;
+    border-radius: 5px;
+    transition: 0.5s;
+    padding: 30px;
+    height: 100%;
+}
+
+@media (max-width: 468px) {
+    .team .team-member {
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+
+.team .team-member .pic {
+    overflow: hidden;
+    width: 150px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.team .team-member .pic img {
+    transition: ease-in-out 0.3s;
+}
+
+.team .team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team .team-member .member-info {
+    padding-left: 30px;
+}
+
+@media (max-width: 468px) {
+    .team .team-member .member-info {
+        padding: 30px 0 0 0;
+        text-align: center;
+    }
+}
+
+.team .team-member h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.team .team-member span {
+    display: block;
+    font-size: 15px;
+    padding-bottom: 10px;
+    position: relative;
+    font-weight: 500;
+}
+
+.team .team-member span::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: color-mix(in srgb, var(--default-color), transparent 85%);
+    bottom: 0;
+    left: 0;
+}
+
+@media (max-width: 468px) {
+    .team .team-member span::after {
+        left: calc(50% - 25px);
+    }
+}
+
+.team .team-member p {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+
+.team .team-member .social {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+}
+
+@media (max-width: 468px) {
+    .team .team-member .social {
+        justify-content: center;
+    }
+}
+
+.team .team-member .social a {
+    background: color-mix(in srgb, var(--default-color), transparent 94%);
+    transition: ease-in-out 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 36px;
+    height: 36px;
+}
+
+.team .team-member .social a i {
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    font-size: 16px;
+    margin: 0 2px;
+}
+
+.team .team-member .social a:hover {
+    background: var(--accent-color);
+}
+
+.team .team-member .social a:hover i {
+    color: var(--contrast-color);
+}
+
+.team .team-member .social a+a {
+    margin-left: 8px;
+}
+
+.values .card {
+    background-color: var(--background-color);
+    color: var(--default-color);
+    padding: 30px;
+    box-shadow: 0px 0 10px color-mix(in srgb, var(--default-color), transparent 92%);
+    text-align: center;
+    transition: 0.3s;
+    height: 100%;
+    border: 0;
+}
+
+.values .card img {
+    padding: 30px 50px;
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+.values .card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.values .card:hover {
+    box-shadow: 0px 0 30px color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+.values .card:hover img {
+    transform: scale(1);
+}
+
+.featured-services .service-item {
+    box-shadow: 0px 0 25px 0 color-mix(in srgb, var(--default-color), transparent 90%);
+    padding: 50px 30px;
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.featured-services .service-item:before {
+    content: "";
+    position: absolute;
+    background: var(--accent-color);
+    inset: 100% 0 0 0;
+    transition: all 0.3s;
+    z-index: -1;
+}
+
+.featured-services .service-item .icon {
+    margin-bottom: 10px;
+}
+
+.featured-services .service-item .icon i {
+    color: var(--accent-color);
+    font-size: 36px;
+    transition: ease-in-out 0.3s;
+}
+
+.featured-services .service-item h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.featured-services .service-item h4 a {
+    color: var(--heading-color);
+    transition: ease-in-out 0.3s;
+}
+
+.featured-services .service-item p {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+    transition: ease-in-out 0.3s;
+}
+
+.featured-services .service-item:hover h4 a,
+.featured-services .service-item:hover .icon i,
+.featured-services .service-item:hover p {
+    color: var(--contrast-color);
+}
+
+.featured-services .service-item:hover:before {
+    background: var(--accent-color);
+    inset: 0;
+    border-radius: 0px;
+}
+
+.service-item {
+    box-shadow: 0px 0 25px 0 color-mix(in srgb, var(--default-color), transparent 90%);
+    padding: 50px 30px;
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.service-item:before {
+    content: "";
+    position: absolute;
+    background: var(--accent-color);
+    inset: 100% 0 0 0;
+    transition: all 0.3s;
+    z-index: -1;
+}
+
+.service-item .icon {
+    margin-bottom: 10px;
+}
+
+.service-item .icon i {
+    color: var(--accent-color);
+    font-size: 36px;
+    transition: ease-in-out 0.3s;
+}
+
+.service-item h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.service-item h4 a {
+    color: var(--heading-color);
+    transition: ease-in-out 0.3s;
+}
+
+.service-item p {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+    transition: ease-in-out 0.3s;
+}
+
+.service-item:hover h4 a,
+.service-item:hover .icon i,
+.service-item:hover p {
+    color: var(--contrast-color);
+}
+
+.service-item:hover:before {
+    background: var(--accent-color);
+    inset: 0;
+    border-radius: 0px;
+}
