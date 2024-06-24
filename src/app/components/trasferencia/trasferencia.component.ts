@@ -84,7 +84,7 @@ export class TrasferenciaComponent implements OnInit {
 
       this.transactionMessage = `Transaction successful! Sent ${this.amount} ETH to ${this.recipientAddress}`;
       this.transactionSuccess = true;
-      this.updateAccountInfo(); // Refresh account info after transaction
+      this.updateAccountInfo(); 
     } catch (error: unknown) {
       if (error instanceof Error) {
         this.transactionMessage = 'Transaction failed: ' + error.message;
@@ -100,7 +100,7 @@ export class TrasferenciaComponent implements OnInit {
   }
 
   logoutWeb3() {
-    this.web3js = null; // Disconnect from Web3 provider
-    this.account = new AccountWeb3Model(); // Reset account information
+    this.web3js = null; 
+    this.account = new AccountWeb3Model();
   }
 }
