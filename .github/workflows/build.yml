@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - Front-end-NoStandalone
       - Test-GitHubActions
   pull_request:
     types: [opened, synchronize, reopened]
@@ -29,14 +28,3 @@ jobs:
       - name: Run unit tests
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadless
 
-      # Add other steps as needed for your build process
-
-      # Example steps for deploying Docker image to Docker Hub
-      - name: Log in to Docker Hub
-        run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-  
-      - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/criptosol:latest .
-  
-      - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/criptosol:latest
