@@ -28,7 +28,7 @@ jobs:
       - name: Run unit tests
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadless
 
- #DOCKER HUB
+ #DOCKER HUB (imagen)
       - name: Log in to Docker Hub
         run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
   
