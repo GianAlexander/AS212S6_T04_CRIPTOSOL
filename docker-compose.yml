@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  app:
+    image: pedroluyo/criptosol:latest
+    container_name: remesas_peru
+    ports:
+      - "4200:4200"
