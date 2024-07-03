@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: pedroluyo/criptosol:latest
+    image: gianalexandernunezsaenz/criptosol:latest
     container_name: criptosol
     ports:
       - "4200:4200"
