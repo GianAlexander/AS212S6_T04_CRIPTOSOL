@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+  #inicia el checkeo en SonarCloud
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -21,7 +22,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
-
+ #Instala dependencias e inicia las pruebas unitarias 
       - name: Install dependencies
         run: npm install
 
