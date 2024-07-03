@@ -1,14 +1,15 @@
-# Usar nginx como base
-FROM nginx:alpine
+FROM node:20
 
-# Copiar la carpeta de construcción al directorio correcto para nginx
-COPY dist/pib-no-standalone/browser /usr/share/nginx/html
+WORKDIR /app
 
-# Exponer el puerto 4200
+COPY package*.json /app
+
+RUN npm install
+
+COPY . /app
+
+RUN npm run build 
+
 EXPOSE 4200
 
-# Modificar la configuración de nginx para escuchar en el puerto 4200
-RUN echo "server { listen 4200; root /usr/share/nginx/html; index index.html index.htm; location / { try_files \$uri \$uri/ /index.html; } }" > /etc/nginx/conf.d/default.conf
-
-#docker build -t angelolm/unificado .
-#docker run -p 4200:4200 angelolm/unificado 
+ENTRYPOINT ["npm", "start"]
