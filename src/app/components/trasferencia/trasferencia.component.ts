@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import AccountWeb3Model from '../../model/account.web3.model';
-import { Web3Service } from '../../core/web3';
 import { Router } from '@angular/router';
+import { Web3Service } from '../../service/web3/web3.service';
 
 @Component({
   selector: 'app-trasferencia',
@@ -9,98 +10,116 @@ import { Router } from '@angular/router';
   styleUrls: ['./trasferencia.component.css']
 })
 export class TrasferenciaComponent implements OnInit {
+  transactionForm: FormGroup;
   account: AccountWeb3Model = new AccountWeb3Model();
-  private web3js: any;
-  recipientAddress: string = '';
-  amount: number = 0;
-  transactionMessage: string | null = null;
+  address: string = '';
+  balance: number = 0;
+  isConnecting: boolean = false;
+  web3Initialized: boolean = false;
+  transactionStatus: string | null = null;
   transactionSuccess: boolean = false;
 
   constructor(
+    private fb: FormBuilder,
     private web3Service: Web3Service,
     private router: Router
   ) {
-    this.web3Service.accountsObservable.subscribe(account => {
-      if (account) {
-        this.updateAccountInfo();
-      }
+    this.transactionForm = this.fb.group({
+      toAddress: ['', [Validators.required, Validators.pattern(/^0x[a-fA-F0-9]{40}$/)]],
+      amount: ['', [Validators.required, Validators.min(0.00000001)]]
     });
   }
 
-  ngOnInit(): void {
-    this.web3Service.refreshAccounts();
+  async ngOnInit() {
+    await this.web3Service.initWeb3();
+    this.updateAccountInfo();
   }
 
   async updateAccountInfo() {
-    if (!this.web3js) {
-      this.web3js = this.web3Service.getWeb3();
-    }
-
-    if (this.web3js) {
-      const accounts = await this.web3js.eth.getAccounts();
-      const weiBalance = await this.web3js.eth.getBalance(accounts[0]);
-      const ethBalance = Number(this.web3js.utils.fromWei(weiBalance, 'ether'));
-      this.account = new AccountWeb3Model().build(accounts[0], ethBalance);
+    try {
+      this.address = await this.web3Service.getAddress();
+      this.balance = await this.web3Service.getBalance();
+      this.web3Initialized = true;
+    } catch (error) {
+      console.error('Error updating account info:', error);
     }
   }
 
-  async connectMetaMask() {
-    this.web3js = await this.web3Service.connectAccount();
-    if (this.web3js) {
-      this.updateAccountInfo();
+  async connectWallet() {
+    if (!this.isConnecting) {
+      this.isConnecting = true;
+      try {
+        await this.web3Service.initWeb3();
+        this.address = await this.web3Service.getAddress();
+        this.balance = await this.web3Service.getBalance();
+        this.web3Initialized = true;
+      } catch (error) {
+        console.error('Error connecting to MetaMask:', error);
+      } finally {
+        this.isConnecting = false;
+      }
+    } else {
+      console.warn('Request to connect to MetaMask is already in progress.');
     }
   }
 
   async sendTransaction() {
-    this.transactionMessage = null;
-    if (!this.web3js) {
-      this.transactionMessage = 'Web3 provider is not initialized.';
-      this.transactionSuccess = false;
+    this.transactionStatus = null;
+    if (!this.web3Initialized) {
+      this.transactionStatus = 'Web3 is not initialized. Please connect to MetaMask first.';
       return;
     }
 
-    if (!this.recipientAddress) {
-      this.transactionMessage = 'Recipient address is not specified.';
-      this.transactionSuccess = false;
-      return;
-    }
+    const toAddress = this.transactionForm.get('toAddress')?.value;
+    const amount = this.transactionForm.get('amount')?.value;
 
-    if (this.amount <= 0) {
-      this.transactionMessage = 'Amount should be greater than zero.';
-      this.transactionSuccess = false;
+    if (!toAddress || !amount) {
+      this.transactionStatus = 'Please complete all fields correctly.';
+      setTimeout(() => {
+        this.transactionStatus = null;
+      }, 3000);
       return;
     }
 
     try {
-      const accounts = await this.web3js.eth.getAccounts();
-      const fromAddress = accounts[0];
-      const value = this.web3js.utils.toWei(this.amount.toString(), 'ether');
-
-      await this.web3js.eth.sendTransaction({
-        from: fromAddress,
-        to: this.recipientAddress,
-        value: value
-      });
-
-      this.transactionMessage = `Transaction successful! Sent ${this.amount} ETH to ${this.recipientAddress}`;
+      this.transactionForm.disable();
+      await this.web3Service.sendTransaction(toAddress, amount);
+      this.transactionStatus = `Transaction successful! Sent ${amount} ETH to ${toAddress}`;
       this.transactionSuccess = true;
-      this.updateAccountInfo(); // Refresh account info after transaction
+      this.updateAccountInfo();
+      this.transactionForm.reset();
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        this.transactionMessage = 'Transaction failed: ' + error.message;
-      } else {
-        this.transactionMessage = 'Transaction failed: Unknown error';
-      }
+      console.error('Error sending transaction:', error);
+      this.transactionStatus = `Transaction failed: ${error instanceof Error ? error.message : 'Unknown error'}`;
       this.transactionSuccess = false;
+    } finally {
+      this.transactionForm.enable();
+      setTimeout(() => {
+        this.transactionStatus = null;
+      }, 3000);
     }
   }
 
-  goSendRemittance() {
-    this.router.navigate(['/send-remittance']).then();
+  disconnectWallet() {
+    this.web3Service.disconnect();
+    this.address = '';
+    this.balance = 0;
+    this.web3Initialized = false;
+    this.transactionStatus = 'Wallet disconnected';
+    setTimeout(() => {
+      this.transactionStatus = null;
+    }, 3000);
+    location.reload();
   }
 
-  logoutWeb3() {
-    this.web3js = null; // Disconnect from Web3 provider
-    this.account = new AccountWeb3Model(); // Reset account information
+  async disconnectMetaMask() {
+    await this.web3Service.disconnectMetaMask();
+    this.address = '';
+    this.balance = 0;
+    this.web3Initialized = false;
+    this.transactionStatus = 'MetaMask disconnected';
+    setTimeout(() => {
+      this.transactionStatus = null;
+    }, 3000);
   }
 }
